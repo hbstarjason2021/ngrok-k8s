@@ -23,7 +23,6 @@ jobs:
         #sudo install colima-$(uname)-$(uname -m) /usr/local/bin/colima
         uname -a 
         brew install docker
-        docker info 
         brew install colima
         colima version 
         colima start --with-kubernetes
