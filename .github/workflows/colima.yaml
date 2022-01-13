@@ -1,4 +1,4 @@
-name: mac
+name: colima
 on: 
   workflow_dispatch:
 defaults:
