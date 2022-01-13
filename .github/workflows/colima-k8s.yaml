@@ -24,8 +24,8 @@ jobs:
         uname -a 
         brew install docker
         brew install colima
-        colima version 
-        colima start --with-kubernetes
+        colima version
         brew install kubectl
         kubectl version 
+        colima start --with-kubernetes
         kubectl get po -A
