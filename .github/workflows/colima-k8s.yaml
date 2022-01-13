@@ -1,4 +1,4 @@
-name: colima
+name: colima-k8s
 on: 
   workflow_dispatch:
 defaults:
