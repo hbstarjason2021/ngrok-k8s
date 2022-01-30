@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  k8s-test:
+  k3s-helm:
     runs-on: ubuntu-20.04
     steps:
       # GitHub Action reference: https://github.com/jupyterhub/action-k3s-helm
