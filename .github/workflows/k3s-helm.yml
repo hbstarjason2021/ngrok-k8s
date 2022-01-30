@@ -1,4 +1,4 @@
-name: Example workflow
+name: k3s-helm
 
 on:
   #pull_request:
@@ -18,8 +18,8 @@ jobs:
           # - k3s versions at https://github.com/k3s-io/k3s/tags
           # - helm versions at https://github.com/helm/helm/tags
           k3s-channel: latest
-            k3s-version: v1.23.1+k3s2
-           helm-version: v3.8.0
+          #k3s-version: v1.23.1+k3s2
+          #helm-version: v3.8.0
 
       - name: Verify function of k8s, kubectl, and helm
         run: |
