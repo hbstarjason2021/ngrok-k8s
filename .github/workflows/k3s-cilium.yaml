@@ -56,4 +56,5 @@ jobs:
          
          cilium status
          
+         sleep 20
          kubectl get po -A
