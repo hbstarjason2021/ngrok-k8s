@@ -1,0 +1,36 @@
+name: opendevops
+
+on:
+  workflow_dispatch: 
+  #schedule:
+  #  - cron:  0 9,12,21 * * * 
+      # 
+      # https://tool.lu/crontab/
+      # https://datetime360.com/cn/utc-cst-china-time/
+  #watch:
+  #    types: started   
+
+jobs:
+  opendevop:
+    runs-on: ubuntu-latest
+    #if: github.event.repository.owner.id == github.event.sender.id
+    # https://p3terx.com/archives/github-actions-manual-trigger.html
+    
+    steps:
+    #- uses: actions/checkout@v2
+    
+    - name: OpenDevOps
+      run: |
+         sudo timedatectl set-timezone 'Asia/Shanghai'
+         
+         git clone https://github.com/QualitySphere/OpenDevOps
+         cd OpenDevOps
+         ./odoctl start all
+         
+         echo "==============================="
+         ./odoctl list
+         echo "==============================="
+         current_time=$(date +"%Y-%m-%d-%k")
+         echo ${current_time}
+         echo "==============================="
+        
