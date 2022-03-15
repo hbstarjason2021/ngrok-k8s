@@ -11,7 +11,7 @@ on:
   #    types: started   
 
 jobs:
-  checkjs:
+  k3s-cilium:
     runs-on: ubuntu-latest
     #if: github.event.repository.owner.id == github.event.sender.id
     # https://p3terx.com/archives/github-actions-manual-trigger.html
