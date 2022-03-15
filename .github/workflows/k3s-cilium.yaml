@@ -54,7 +54,12 @@ jobs:
          
          cilium install
          
-         cilium status
+         cilium hubble enable --ui
+         cilium hubble ui
          
-         sleep 20
+         cilium status --wait
+         
+         sleep 30
          kubectl get po -A
+         
+         cilium connectivity test
