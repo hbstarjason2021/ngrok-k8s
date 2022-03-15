@@ -1,0 +1,39 @@
+name: k3s-cilium
+
+on:
+  workflow_dispatch: 
+  #schedule:
+  #  - cron:  0 9,12,21 * * * 
+      # 
+      # https://tool.lu/crontab/
+      # https://datetime360.com/cn/utc-cst-china-time/
+  #watch:
+  #    types: started   
+
+jobs:
+  checkjs:
+    runs-on: ubuntu-latest
+    #if: github.event.repository.owner.id == github.event.sender.id
+    # https://p3terx.com/archives/github-actions-manual-trigger.html
+    
+    steps:
+    #- uses: actions/checkout@v2
+    
+    - name: k3s-cilium
+      run: |
+         sudo timedatectl set-timezone 'Asia/Shanghai'
+         
+         curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" \
+              INSTALL_K3S_EXEC="--flannel-backend=none --cluster-cidr=10.42.0.0/16 --disable-network-policy --disable=traefik" sh -
+              
+         curl -L --remote-name-all https://github.com/cilium/cilium-cli/releases/latest/download/cilium-linux-amd64.tar.gz{,.sha256sum}
+         sha256sum --check cilium-linux-amd64.tar.gz.sha256sum
+         sudo tar xzvfC cilium-linux-amd64.tar.gz /usr/local/bin
+         rm cilium-linux-amd64.tar.gz{,.sha256sum}
+         
+         cilium version
+         
+         cilium install
+         
+         cilium status
+         
