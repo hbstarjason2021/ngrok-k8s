@@ -25,7 +25,10 @@ jobs:
          
          curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" \
               INSTALL_K3S_EXEC="--flannel-backend=none --cluster-cidr=10.42.0.0/16 --disable-network-policy --disable=traefik" sh -
-              
+         
+         export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+         echo "****** k3s running *******"
+         
          curl -L --remote-name-all https://github.com/cilium/cilium-cli/releases/latest/download/cilium-linux-amd64.tar.gz{,.sha256sum}
          sha256sum --check cilium-linux-amd64.tar.gz.sha256sum
          sudo tar xzvfC cilium-linux-amd64.tar.gz /usr/local/bin
