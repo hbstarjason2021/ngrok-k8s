@@ -99,3 +99,4 @@ install_kubecolor
 install_helm
 install_minikube
 install_compose
+install_kind
