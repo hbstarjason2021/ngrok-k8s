@@ -83,6 +83,16 @@ install_compose() {
     echo -e "${green}docker-compose is already installed${white}"
 }
 
+install_kind() {
+    echo "Installing Kind"
+    KIND_VESION="v0.12.0"
+    curl -Lo ./kind https://kind.sigs.k8s.io/dl/${KIND_VESION}/kind-linux-amd64
+    chmod +x ./kind
+    mv ./kind /usr/local/bin/kind
+    kind version
+    echo -e "${green}kind is already installed${white}"
+}
+
 ## install_git
 install_kubectl
 install_kubecolor
