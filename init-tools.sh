@@ -22,7 +22,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 fi
 
 
-install_git () {
+function install_git () {
   set +e
   if [[ $(command -v snap >/dev/null; echo $?) -eq 0 ]];
   then
