@@ -84,6 +84,16 @@ install_compose() {
     echo -e "${green}docker-compose is already installed${white}"
 }
 
+change_docker_mirror(){
+    cat >  /etc/docker/daemon.json <<EOF
+    {
+      "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"]
+    }
+    EOF
+      systemctl restart docker
+      echo "docker mirror change successful"
+}
+
 install_kind() {
     echo "Installing Kind"
     KIND_VESION="v0.12.0"
@@ -100,4 +110,5 @@ install_kubecolor
 install_helm
 install_minikube
 install_compose
+## change_docker_mirror
 install_kind
