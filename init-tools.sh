@@ -72,8 +72,20 @@ install_minikube() {
     echo -e "${green}Minikube is already installed${white}"
 }
 
+install_compose() {
+    echo "Installing docker-compose"
+    ## v2.2.3
+    COMPOSE_VESION="1.29.2"
+    curl -L "https://github.com/docker/compose/releases/download/${COMPOSE_VESION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    ## curl -L "http://rancher-mirror.cnrancher.com/docker-compose/v1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose 
+    docker-compose version
+    echo -e "${green}docker-compose is already installed${white}"
+}
+
 ## install_git
 install_kubectl
 install_kubecolor
 install_helm
 install_minikube
+install_compose
