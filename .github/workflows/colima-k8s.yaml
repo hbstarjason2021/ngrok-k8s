@@ -28,4 +28,5 @@ jobs:
         brew install kubectl
         kubectl version 
         colima start --with-kubernetes
+        export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
         kubectl get po -A
