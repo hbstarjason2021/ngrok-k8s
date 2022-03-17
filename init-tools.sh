@@ -89,7 +89,7 @@ function change_docker_mirror(){
     {
       "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"]
     }
-   EOF
+EOF
       systemctl restart docker
       echo "docker mirror change successful"
 }
