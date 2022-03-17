@@ -1,4 +1,4 @@
-name: k3d-k3s
+name: k3d-k3s-multi-cluster
 
 on:
   workflow_dispatch: 
