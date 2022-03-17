@@ -39,8 +39,11 @@ jobs:
          mv ./kind /usr/local/bin/kind
          kind version
 
-         wget https://raw.githubusercontent.com/clusternet/clusternet/main/hack/local-running.sh && \
-              bash local-running.sh
+         #wget https://raw.githubusercontent.com/clusternet/clusternet/main/hack/local-running.sh && \
+         #     bash local-running.sh
+         
+         git clone https://github.com/clusternet/clusternet && cd clusternet
+         ./hack/local-running.sh
          
          echo "==============================="
          
