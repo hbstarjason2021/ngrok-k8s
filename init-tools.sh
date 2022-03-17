@@ -7,10 +7,12 @@ green="\033[32m"
 yellow="\033[33m"
 white="\033[0m"
 
+<< CONTENT
 if [[ "$(whoami)" != "root" ]]; then
 	echo "please run this script as root ." >&2
 	exit 1
 fi
+CONTENT
 
 set _platform=""
 if [ "$(uname)" == "Darwin" ]; then
