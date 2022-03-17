@@ -104,6 +104,7 @@ install_kind(){
     echo -e "${green}kind is already installed${white}"
 }
 
+
 ## install_git
 install_kubectl
 install_kubecolor
