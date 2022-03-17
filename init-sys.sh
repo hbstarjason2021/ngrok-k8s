@@ -11,6 +11,7 @@ fi
 
 
 #### https://github.com/ITdesk01/Linux-NetSpeed/blob/main/tcp.sh
+#### https://github.com/Chikage0o0/Linux-NetSpeed
 ################################################################################
 << CONTENT
 
