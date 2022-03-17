@@ -9,6 +9,8 @@ if [[ "$(whoami)" != "root" ]]; then
 	exit 1
 fi
 
+
+#### https://github.com/ITdesk01/Linux-NetSpeed/blob/main/tcp.sh
 ################################################################################
 << CONTENT
 
