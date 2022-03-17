@@ -10,6 +10,21 @@ if [[ "$(whoami)" != "root" ]]; then
 fi
 
 
+<< CONTENT
+
+elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
+
+	if [[ "${release}" == "centos" ]]; then
+		yum update -y 
+
+	elif [[ "${release}" == "ubuntu" ]]; then
+		apt-get update -y
+	elif [[ "${release}" == "debian" ]]; then
+		apt-get update -y 
+	fi
+
+CONTENT
+
 
 
 #检查系统
