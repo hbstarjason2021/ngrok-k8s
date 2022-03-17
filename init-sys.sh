@@ -9,22 +9,45 @@ if [[ "$(whoami)" != "root" ]]; then
 	exit 1
 fi
 
-
+################################################################################
 << CONTENT
 
 elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
 
 	if [[ "${release}" == "centos" ]]; then
+	        yum install epel-release -y
 		yum update -y 
-
 	elif [[ "${release}" == "ubuntu" ]]; then
 		apt-get update -y
 	elif [[ "${release}" == "debian" ]]; then
 		apt-get update -y 
 	fi
 
-CONTENT
+close_firewalld()
+{
+    echo "starting stop firewalld ..."
+    systemctl stop firewalld
+    systemctl disable firewalld
+    echo "firewalld stoped !!!"
+}
 
+close_selinux()
+{
+    echo "starting close selinux ..."
+    setenforce 0
+    sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+    echo "selinux closed !!!"
+}
+
+disable_swap()
+{
+sudo swapoff -a
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+}
+
+
+CONTENT
+################################################################################
 
 
 #检查系统
@@ -60,6 +83,9 @@ function check_version(){
 		bit="x32"
 	fi
 }
+
+#
+
 
 
 check_sys
