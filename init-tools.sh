@@ -36,7 +36,7 @@ function install_git () {
   set -e
 }
 
-install_kubectl() {
+function install_kubectl() {
     ## sudo snap install kubectl --classic
     ## curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
     curl -sLO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/$_platform/amd64/kubectl
@@ -47,14 +47,14 @@ install_kubectl() {
     echo -e "${green}kubectl is already installed${white}"
 }
 
-install_kubecolor() {
+function install_kubecolor() {
     KUBECOLOR_VERSION=0.0.20
     curl -sSL https://github.com/hidetatz/kubecolor/releases/download/v${KUBECOLOR_VERSION}/kubecolor_${KUBECOLOR_VERSION}_Linux_x86_64.tar.gz | sudo tar xz -C /usr/local/bin kubecolor
     kubecolor version --client
     echo -e "${green}kubecolor is already installed${white}"
 }
 
-install_helm() {
+function install_helm() {
     echo "Installing Helm"
     curl -s https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
     #HELMVERSION=helm-v3.8.1
@@ -63,7 +63,7 @@ install_helm() {
     echo -e "${green}Helm is already installed${white}"
 }
 
-install_minikube() {
+function install_minikube() {
     echo "Installing Minikube"
     curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     sudo install minikube-linux-amd64 /usr/local/bin/minikube
@@ -73,7 +73,7 @@ install_minikube() {
     echo -e "${green}Minikube is already installed${white}"
 }
 
-install_compose() {
+function install_compose() {
     echo "Installing docker-compose"
     ## v2.2.3
     COMPOSE_VESION="1.29.2"
@@ -84,7 +84,7 @@ install_compose() {
     echo -e "${green}docker-compose is already installed${white}"
 }
 
-change_docker_mirror(){
+function change_docker_mirror(){
     cat >  /etc/docker/daemon.json <<EOF
     {
       "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"]
@@ -94,7 +94,7 @@ change_docker_mirror(){
       echo "docker mirror change successful"
 }
 
-install_kind(){
+function install_kind(){
     echo "Installing Kind"
     KIND_VESION="v0.12.0"
     curl -Lo ./kind https://kind.sigs.k8s.io/dl/${KIND_VESION}/kind-linux-amd64
