@@ -9,7 +9,7 @@ KUBECONFIG_FILE=${KUBECONFIG_FILE:-"${HOME}/.kube/clusternet.config"}
 PARENT_CLUSTER_NAME=${PARENT_CLUSTER_NAME:-"parent"}
 CHILD_1_CLUSTER_NAME=${CHILD_1_CLUSTER_NAME:-"child1"}
 CHILD_2_CLUSTER_NAME=${CHILD_2_CLUSTER_NAME:-"child2"}
-CHILD_3_CLUSTER_NAME=${CHILD_3_CLUSTER_NAME:-"child3"}
+############ CHILD_3_CLUSTER_NAME=${CHILD_3_CLUSTER_NAME:-"child3"}
 KIND_IMAGE_VERSION=${KIND_IMAGE_VERSION:-"kindest/node:v1.22.0"}
 
 function create_cluster() {
@@ -35,9 +35,10 @@ PARENT_CLUSTER_SERVER=${kind_server}
 
 create_cluster "${CHILD_1_CLUSTER_NAME}" "${KUBECONFIG_DIR}/${CHILD_1_CLUSTER_NAME}.config" "${KIND_IMAGE_VERSION}"
 create_cluster "${CHILD_2_CLUSTER_NAME}" "${KUBECONFIG_DIR}/${CHILD_2_CLUSTER_NAME}.config" "${KIND_IMAGE_VERSION}"
-create_cluster "${CHILD_3_CLUSTER_NAME}" "${KUBECONFIG_DIR}/${CHILD_3_CLUSTER_NAME}.config" "${KIND_IMAGE_VERSION}"
+############## create_cluster "${CHILD_3_CLUSTER_NAME}" "${KUBECONFIG_DIR}/${CHILD_3_CLUSTER_NAME}.config" "${KIND_IMAGE_VERSION}"
 
-export KUBECONFIG="${KUBECONFIG_DIR}/${PARENT_CLUSTER_NAME}.config:${KUBECONFIG_DIR}/${CHILD_1_CLUSTER_NAME}.config:${KUBECONFIG_DIR}/${CHILD_2_CLUSTER_NAME}.config:${KUBECONFIG_DIR}/${CHILD_3_CLUSTER_NAME}.config"
+#### export KUBECONFIG="${KUBECONFIG_DIR}/${PARENT_CLUSTER_NAME}.config:${KUBECONFIG_DIR}/${CHILD_1_CLUSTER_NAME}.config:${KUBECONFIG_DIR}/${CHILD_2_CLUSTER_NAME}.config:${KUBECONFIG_DIR}/${CHILD_3_CLUSTER_NAME}.config"
+export KUBECONFIG="${KUBECONFIG_DIR}/${PARENT_CLUSTER_NAME}.config:${KUBECONFIG_DIR}/${CHILD_1_CLUSTER_NAME}.config:${KUBECONFIG_DIR}/${CHILD_2_CLUSTER_NAME}.config"
 kubectl config view --flatten > "${KUBECONFIG_FILE}"
 unset KUBECONFIG
 
@@ -75,6 +76,8 @@ helm --kubeconfig="${KUBECONFIG_FILE}" --kube-context="${CHILD_2_CLUSTER_NAME}" 
   clusternet/clusternet-agent
 echo "Installing clusternet-agent into child2 finished"
 
+<< CONTENT
+##################################
 echo "Installing clusternet-agent into child3..."
 helm --kubeconfig="${KUBECONFIG_FILE}" --kube-context="${CHILD_3_CLUSTER_NAME}" install \
   clusternet-agent -n clusternet-system --create-namespace \
@@ -82,6 +85,8 @@ helm --kubeconfig="${KUBECONFIG_FILE}" --kube-context="${CHILD_3_CLUSTER_NAME}" 
   --set registrationToken=07401b.f395accd246ae52d \
   clusternet/clusternet-agent
 echo "Installing clusternet-agent into child3 finished"
+###################################
+CONTENT
 
 echo "Local clusternet is running now."
 echo "To start using clusternet, please run:"
