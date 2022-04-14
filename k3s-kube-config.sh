@@ -58,4 +58,8 @@ _EOF
 ### start download service
 kubectl apply -f /tmp/kube-config.yaml
 
+
+## mkdir -p $HOME/.kube
+## sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
 ## curl -qs -o ~/.kube/config $(curl -sS ip.sb):30000/kube-config.txt
