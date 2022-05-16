@@ -13,5 +13,5 @@ k3s check-config
 # curl -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn sh -s - --disable=traefik
 
 ### 卸载
-/usr/local/bin/k3s-uninstall.sh
-/usr/local/bin/k3s-agent-uninstall.sh
+# /usr/local/bin/k3s-uninstall.sh
+# /usr/local/bin/k3s-agent-uninstall.sh
