@@ -4,6 +4,13 @@
 
 set -eux
 
+KIND_VESION="v0.13.0"
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/${KIND_VESION}/kind-linux-amd64
+chmod +x ./kind
+mv ./kind /usr/local/bin/kind
+kind version
+
+
 cat <<EOF | kind create cluster --config=-
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
