@@ -4,12 +4,15 @@
 
 set -eux
 
+## https://github.com/kubernetes-sigs/kind/releases
+
 KIND_VESION="v0.13.0"
 curl -Lo ./kind https://kind.sigs.k8s.io/dl/${KIND_VESION}/kind-linux-amd64
 chmod +x ./kind
 mv ./kind /usr/local/bin/kind
 kind version
 
+### https://kind.sigs.k8s.io/docs/user/ingress/
 
 cat <<EOF | kind create cluster --config=-
 kind: Cluster
