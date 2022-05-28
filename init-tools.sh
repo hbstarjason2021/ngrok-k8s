@@ -106,6 +106,16 @@ function install_kind(){
     echo -e "${green}kind is already installed${white}"
 }
 
+function install_terraform(){
+    echo "Installing terraform"
+    TERRAFORM_VESION="1.2.0"
+    curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM_VESION}/terraform_${TERRAFORM_VESION}_linux_amd64.zip
+    unzip terraform_${TERRAFORM_VESION}_linux_amd64.zip
+    chmod +x ./terraform
+    mv terraform /usr/local/bin
+    terraform version
+    echo -e "${green}terraform is already installed${white}"
+}
 
 ## install_git
 install_kubectl
@@ -115,3 +125,4 @@ install_minikube
 install_compose
 ## change_docker_mirror
 install_kind
+install_terraform
