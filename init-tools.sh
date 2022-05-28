@@ -98,7 +98,7 @@ EOF
 
 function install_kind(){
     echo "Installing Kind"
-    KIND_VESION="v0.12.0"
+    KIND_VESION="v0.14.0"
     curl -Lo ./kind https://kind.sigs.k8s.io/dl/${KIND_VESION}/kind-linux-amd64
     chmod +x ./kind
     mv ./kind /usr/local/bin/kind
