@@ -38,6 +38,13 @@ function install_git () {
   set -e
 }
 
+function install_docker() {
+    curl -fsSL https://get.docker.com | bash -
+    ## curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+    ## apt install docker.io -y
+    echo -e "${green}docker is already installed${white}"
+}
+
 function install_kubectl() {
     ## sudo snap install kubectl --classic
     ## curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -118,6 +125,7 @@ function install_terraform(){
 }
 
 ## install_git
+install_docker
 install_kubectl
 install_kubecolor
 install_helm
