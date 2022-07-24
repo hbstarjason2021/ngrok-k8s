@@ -115,7 +115,7 @@ function install_kind(){
 
 function install_terraform(){
     echo "Installing terraform"
-    TERRAFORM_VESION="1.2.0"
+    TERRAFORM_VESION="1.2.5"
     curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM_VESION}/terraform_${TERRAFORM_VESION}_linux_amd64.zip
     unzip terraform_${TERRAFORM_VESION}_linux_amd64.zip
     chmod +x ./terraform
