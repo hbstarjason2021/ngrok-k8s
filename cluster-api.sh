@@ -29,4 +29,4 @@ clusterctl generate cluster c1 --flavor development \
   > c1-clusterapi.yaml
   
 
-/mgmt/templates/cluster-api-template.yaml
+c1-clusterapi.yaml
