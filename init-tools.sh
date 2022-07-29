@@ -127,8 +127,9 @@ function install_terraform(){
 ## https://cluster-api.sigs.k8s.io/user/quick-start.html
 function install_clusterctl(){
     echo "Installing clusterctl"
-    CLUSTERCTL_VESION="1.2.0"
-    curl -Lo ./clusterctl https://github.com/kubernetes-sigs/cluster-api/releases/download/${CLUSTERCTL_VESION}/clusterctl-linux-amd64
+    #CLUSTERCTL_VESION="1.2.0"
+    #curl -L "https://github.com/kubernetes-sigs/cluster-api/releases/download/${CLUSTERCTL_VESION}/clusterctl-linux-amd64" -O ./clusterctl
+    curl -L https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.2.0/clusterctl-linux-amd64 -o clusterctl
     chmod +x ./clusterctl
     mv clusterctl /usr/local/bin
     clusterctl version
@@ -136,7 +137,7 @@ function install_clusterctl(){
 }
 
 ## install_git
-install_docker
+## install_docker
 install_kubectl
 install_kubecolor
 install_helm
