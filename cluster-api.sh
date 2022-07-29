@@ -54,8 +54,7 @@ clusterctl generate cluster c1 --flavor development \
   --worker-machine-count=3 \
   > c1-clusterapi.yaml
   
-
-c1-clusterapi.yaml
+kubectl apply -f c1-clusterapi.yaml
 
 
 kubectl --kubeconfig=./capi-quickstart.kubeconfig  apply -f https://docs.projectcalico.org/v3.21/manifests/calico.yaml
