@@ -10,6 +10,11 @@ clusterctl version
 
 curl https://raw.githubusercontent.com/hbstarjason2021/ngrok-k8s/main/install-kubectl.sh | bash
 
+    KIND_VESION="v0.14.0"
+    curl -Lo ./kind https://kind.sigs.k8s.io/dl/${KIND_VESION}/kind-linux-amd64
+    chmod +x ./kind
+    mv ./kind /usr/local/bin/kind
+    kind version
 
 cat <<EOF > mgmt-cluster-config.yaml
 kind: Cluster
