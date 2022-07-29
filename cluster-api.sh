@@ -11,8 +11,7 @@ clusterctl version
 curl https://raw.githubusercontent.com/hbstarjason2021/ngrok-k8s/main/install-kubectl.sh | bash
 
 
-mgmt-cluster-config.yaml
-
+cat <<EOF > mgmt-cluster-config.yaml
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
@@ -20,14 +19,15 @@ nodes:
   extraMounts:
     - hostPath: /var/run/docker.sock
       containerPath: /var/run/docker.sock
-      
+EOF
+
 
 kind create cluster --config mgmt-cluster-config.yaml --name mgmt
 
 clusterctl init --infrastructure docker
 
 
-kubectl apply -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+### kubectl apply -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
 clusterctl generate cluster c1 --flavor development \
   --infrastructure docker \
