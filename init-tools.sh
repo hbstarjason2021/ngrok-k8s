@@ -128,9 +128,10 @@ function install_terraform(){
 function install_clusterctl(){
     echo "Installing clusterctl"
     CLUSTERCTL_VESION="1.2.0"
-    curl -L https://github.com/kubernetes-sigs/cluster-api/releases/download/${CLUSTERCTL_VESION}/clusterctl-linux-amd64 -o clusterctl
+    curl -Lo ./clusterctl https://github.com/kubernetes-sigs/cluster-api/releases/download/${CLUSTERCTL_VESION}/clusterctl-linux-amd64 -o clusterctl
     chmod +x ./clusterctl
     mv clusterctl /usr/local/bin
+    clusterctl version
     echo -e "${green}clusterctl is already installed${white}"
 }
 
