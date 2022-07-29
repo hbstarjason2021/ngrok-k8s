@@ -124,6 +124,16 @@ function install_terraform(){
     echo -e "${green}terraform is already installed${white}"
 }
 
+## https://cluster-api.sigs.k8s.io/user/quick-start.html
+function install_clusterctl(){
+    echo "Installing clusterctl"
+    CLUSTERCTL_VESION="1.2.0"
+    curl -L https://github.com/kubernetes-sigs/cluster-api/releases/download/${CLUSTERCTL_VESION}/clusterctl-linux-amd64 -o clusterctl
+    chmod +x ./clusterctl
+    mv clusterctl /usr/local/bin
+    echo -e "${green}clusterctl is already installed${white}"
+}
+
 ## install_git
 install_docker
 install_kubectl
@@ -134,3 +144,5 @@ install_compose
 ## change_docker_mirror
 install_kind
 install_terraform
+install_clusterctl
+
