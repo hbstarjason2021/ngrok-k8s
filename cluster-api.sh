@@ -72,3 +72,4 @@ clusterctl get kubeconfig c1 > c1.kubeconfig
 
 kubectl --kubeconfig=./c1.kubeconfig get nodes
 
+### wget https://github.com/ahmetb/kubectx/releases/download/v0.9.4/kubectx
