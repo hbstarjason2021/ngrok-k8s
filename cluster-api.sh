@@ -57,5 +57,11 @@ clusterctl generate cluster c1 --flavor development \
 kubectl apply -f c1-clusterapi.yaml
 
 
-kubectl --kubeconfig=./capi-quickstart.kubeconfig  apply -f https://docs.projectcalico.org/v3.21/manifests/calico.yaml
+kind get clusters
+
+kind export kubeconfig --name c1
+
+kubectl  apply -f https://docs.projectcalico.org/v3.21/manifests/calico.yaml
+
+
 
