@@ -29,6 +29,7 @@ EOF
 
 kind create cluster --config mgmt-cluster-config.yaml --name mgmt
 
+export CLUSTER_TOPOLOGY=true
 clusterctl init --infrastructure docker
 
 
