@@ -3,6 +3,14 @@
 ### https://cluster-api.sigs.k8s.io/user/quick-start.html
 
 
+curl -L https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.2.0/clusterctl-linux-amd64 -o clusterctl
+chmod +x ./clusterctl
+mv ./clusterctl /usr/local/bin/clusterctl
+clusterctl version
+
+curl https://raw.githubusercontent.com/hbstarjason2021/ngrok-k8s/main/install-kubectl.sh | bash
+
+
 mgmt-cluster-config.yaml
 
 kind: Cluster
@@ -30,3 +38,7 @@ clusterctl generate cluster c1 --flavor development \
   
 
 c1-clusterapi.yaml
+
+
+kubectl --kubeconfig=./capi-quickstart.kubeconfig  apply -f https://docs.projectcalico.org/v3.21/manifests/calico.yaml
+
