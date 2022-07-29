@@ -61,15 +61,17 @@ kind get clusters
 
 kind export kubeconfig --name c1
 
-kubectl  apply -f https://docs.projectcalico.org/v3.21/manifests/calico.yaml
-
 
 clusterctl describe cluster c1
 
 kubectl get kubeadmcontrolplane
+
 
 clusterctl get kubeconfig c1 > c1.kubeconfig
 
 kubectl --kubeconfig=./c1.kubeconfig get nodes
 
 ### wget https://github.com/ahmetb/kubectx/releases/download/v0.9.4/kubectx
+
+kubectl --kubeconfig=./c1.kubeconfig \
+  apply -f https://docs.projectcalico.org/v3.21/manifests/calico.yaml
