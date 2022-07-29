@@ -26,7 +26,6 @@ nodes:
       containerPath: /var/run/docker.sock
 EOF
 
-
 kind create cluster --config mgmt-cluster-config.yaml --name mgmt
 
 export CLUSTER_TOPOLOGY=true
@@ -34,6 +33,19 @@ clusterctl init --infrastructure docker
 
 
 ### kubectl apply -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+
+# The list of service CIDR, default ["10.128.0.0/12"]
+export SERVICE_CIDR=["10.96.0.0/12"]
+
+# The list of pod CIDR, default ["192.168.0.0/16"]
+export POD_CIDR=["192.168.0.0/16"]
+
+# The service domain, default "cluster.local"
+export SERVICE_DOMAIN="k8s.test"
+
+export ENABLE_POD_SECURITY_STANDARD="false"
+
 
 clusterctl generate cluster c1 --flavor development \
   --infrastructure docker \
