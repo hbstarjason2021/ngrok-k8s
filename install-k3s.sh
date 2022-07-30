@@ -15,3 +15,13 @@ k3s check-config
 ### 卸载
 # /usr/local/bin/k3s-uninstall.sh
 # /usr/local/bin/k3s-agent-uninstall.sh
+
+
+curl -sfL https://get.k3s.io | K3S_CLUSTER_SECRET=thisisverysecret sh -
+k3s kubectl get node
+until k3s kubectl get node 2>/dev/null | grep master | grep -q ' Ready'; do sleep 1; done; k3s kubectl get node
+
+curl -sfL https://get.k3s.io | K3S_CLUSTER_SECRET=thisisverysecret K3S_URL=https://172.30.1.2:6443 sh -
+k3s kubectl get node
+until k3s kubectl get node | grep node01 | grep -q ' Ready'; do sleep 1; done; k3s kubectl get node
+
