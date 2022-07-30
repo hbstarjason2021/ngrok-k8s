@@ -49,7 +49,7 @@ export ENABLE_POD_SECURITY_STANDARD="false"
 
 clusterctl generate cluster c1 --flavor development \
   --infrastructure docker \
-  --kubernetes-version v1.21.1 \
+  --kubernetes-version v1.24.0 \
   --control-plane-machine-count=3 \
   --worker-machine-count=3 \
   > c1-clusterapi.yaml
