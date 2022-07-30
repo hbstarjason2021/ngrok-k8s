@@ -1,5 +1,6 @@
+curl -sfL https://get.rke2.io | INSTALL_RKE2_TYPE=server sh -
 
-curl -sfL http://rancher-mirror.rancher.cn/rke2/install.sh | INSTALL_RKE2_MIRROR=cn sh -
+## curl -sfL http://rancher-mirror.rancher.cn/rke2/install.sh | INSTALL_RKE2_MIRROR=cn sh -
 
 systemctl enable rke2-server.service
 systemctl start rke2-server.service
