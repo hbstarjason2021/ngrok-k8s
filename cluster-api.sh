@@ -75,3 +75,6 @@ kubectl --kubeconfig=./c1.kubeconfig get nodes
 
 kubectl --kubeconfig=./c1.kubeconfig \
   apply -f https://docs.projectcalico.org/v3.21/manifests/calico.yaml
+
+
+### clusterctl config repositories
