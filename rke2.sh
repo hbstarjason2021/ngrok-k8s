@@ -1,3 +1,8 @@
+curl -sfL https://get.rke2.io | sh -
+systemctl enable rke2-server.service
+systemctl start rke2-server.service
+
+
 curl -sfL https://get.rke2.io | INSTALL_RKE2_TYPE=server sh -
 
 ## curl -sfL http://rancher-mirror.rancher.cn/rke2/install.sh | INSTALL_RKE2_MIRROR=cn sh -
@@ -10,11 +15,17 @@ journalctl -u rke2-server -f
 ## /var/lib/rancher/rke2/:存放额外部署的集群插件（core-dns、网络插件、Ingress-Controller）、etcd数据库存放路径、其他worker连接的token
 ## /etc/rancher/rke2/：连接集群的kubeconfig文件，以及集群组件参数配置信息
 
-mkdir -p ~/.kube/
+
+mkdir ~/.kube
 cp /etc/rancher/rke2/rke2.yaml ~/.kube/config
+cp /var/lib/rancher/rke2/bin/* /usr/local/bin/
 
 ## 获取worker注册到server的token文件
 cat /var/lib/rancher/rke2/server/token
+
+
+# cert manager
+## kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.9.1/cert-manager.yaml
 
 
 curl -sfL http://rancher-mirror.rancher.cn/rke2/install.sh | INSTALL_RKE2_MIRROR=cn INSTALL_RKE2_TYPE="agent"  sh -
