@@ -4,9 +4,11 @@
 
 set -eux
 
+curl https://raw.githubusercontent.com/hbstarjason2021/ngrok-k8s/main/install-kubectl.sh | bash
+
 ## https://github.com/kubernetes-sigs/kind/releases
 
-KIND_VESION="v0.13.0"
+KIND_VESION="v0.14.0"
 curl -Lo ./kind https://kind.sigs.k8s.io/dl/${KIND_VESION}/kind-linux-amd64
 chmod +x ./kind
 mv ./kind /usr/local/bin/kind
@@ -48,9 +50,13 @@ kubectl get po -A
 #############################
 <<'COMMENT'
 
+kubectl create deployment nginx --image=nginx:alpine
+kubectl create service nodeport nginx --tcp=80:80
+
+
 NODE_IP=$(kubectl get node -o wide|tail -1|awk {'print $6'})
-NODE_PORT=$(kubectl get svc nginx-service -o go-template='{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}')
-sleep 60
+NODE_PORT=$(kubectl get svc nginx -o go-template='{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}')
+sleep 30
 SUCCESS=$(curl $NODE_IP:$NODE_PORT)
 if [[ "${SUCCESS}" != "Hello World" ]]; 
 then
