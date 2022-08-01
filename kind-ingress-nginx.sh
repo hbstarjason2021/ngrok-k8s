@@ -44,3 +44,22 @@ kubectl wait --namespace ingress-nginx \
   --timeout=90s
 
 kubectl get po -A
+
+#############################
+<<'COMMENT'
+
+NODE_IP=$(kubectl get node -o wide|tail -1|awk {'print $6'})
+NODE_PORT=$(kubectl get svc nginx-service -o go-template='{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}')
+sleep 60
+SUCCESS=$(curl $NODE_IP:$NODE_PORT)
+if [[ "${SUCCESS}" != "Hello World" ]]; 
+then
+ kind -q delete cluster
+ exit 1;
+else
+ kind -q delete cluster
+ echo "Component test succesful"
+fi
+
+COMMENT
+#############################
