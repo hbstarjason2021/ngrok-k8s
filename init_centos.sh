@@ -22,6 +22,10 @@ for target in firewalld python-firewall firewalld-filesystem iptables; do
   systemctl disable $target &>/dev/null || true
 done
 
+# Disable NetworkManager
+systemctl stop NetworkManager && systemctl disable NetworkManager
+
+
 # repo
 [ -f /etc/yum.repos.d/CentOS-Base.repo ] && sed -e 's!^#baseurl=!baseurl=!g' \
   -e 's!^mirrorlist=!#mirrorlist=!g' \
