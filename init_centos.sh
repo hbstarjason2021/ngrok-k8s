@@ -7,6 +7,8 @@
 ### 调整YUM
 ###
 
+###### curl https://raw.githubusercontent.com/docker/docker/master/contrib/check-config.sh > check-config.sh && bash ./check-config.sh
+
 
 # Disable selinux
 sed -i '/SELINUX/s/enforcing/disabled/' /etc/selinux/config
