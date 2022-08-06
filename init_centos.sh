@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+### 关闭selinux
+### 关闭swap
+### 关闭firewalld
+### 关掉NetworkManager
+### 调整YUM
+###
+
 
 # Disable selinux
 sed -i '/SELINUX/s/enforcing/disabled/' /etc/selinux/config
