@@ -40,6 +40,9 @@ jobs:
          ls -l out
          tree out
          cd out/linux-amd64 && du -sh *
+         
+         echo "=========upload==================="
+         curl --upload-file out/linux-amd64/kurator https://transfer.sh/kurator 
 
          echo "==============================="
          current_time=$(date +"%Y-%m-%d-%k")
