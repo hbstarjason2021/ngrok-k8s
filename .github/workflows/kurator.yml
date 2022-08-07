@@ -41,8 +41,10 @@ jobs:
          tree out
          cd out/linux-amd64 && du -sh *
          
+         ### https://bashupload.com/
          echo "=========upload==================="
-         curl --upload-file out/linux-amd64/kurator https://transfer.sh/kurator 
+         pwd
+         curl --upload-file ./kurator https://transfer.sh/kurator 
 
          echo "==============================="
          current_time=$(date +"%Y-%m-%d-%k")
