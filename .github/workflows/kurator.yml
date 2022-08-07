@@ -39,7 +39,7 @@ jobs:
          echo "==============================="
          ls -l out
          tree out
-         cd out && du -sh *
+         cd out/linux-amd64 && du -sh *
 
          echo "==============================="
          current_time=$(date +"%Y-%m-%d-%k")
