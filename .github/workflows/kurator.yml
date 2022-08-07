@@ -32,7 +32,8 @@ jobs:
          
          git clone https://github.com/kurator-dev/kurator
          cd kurator
-         make lint
+         ## make lint
+         make test
          make kurator
          
          echo "==============================="
