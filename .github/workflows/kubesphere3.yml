@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Creating kind cluster
-        uses: helm/kind-action@v1.2.0
+        uses: helm/kind-action@v1.3.0
       - name: Install KubeSphere3
         run: |
           kubectl cluster-info
@@ -15,8 +15,8 @@ jobs:
           kubectl get pods -n kube-system
           helm version
           kubectl version
-          kubectl apply -f https://github.com/kubesphere/ks-installer/releases/download/v3.2.0/kubesphere-installer.yaml
-          kubectl apply -f https://github.com/kubesphere/ks-installer/releases/download/v3.2.0/cluster-configuration.yaml
+          kubectl apply -f https://github.com/kubesphere/ks-installer/releases/download/v3.3.0/kubesphere-installer.yaml
+          kubectl apply -f https://github.com/kubesphere/ks-installer/releases/download/v3.3.0/cluster-configuration.yaml
           # admin/P@88w0rd
       - name: Expose Port for Kind
         run: |
