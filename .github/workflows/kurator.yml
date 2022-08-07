@@ -31,7 +31,9 @@ jobs:
          git clone https://github.com/kurator-dev/kurator
          cd kurator
          make kurator
-
+         
+         echo "==============================="
+         ls -l out
 
          echo "==============================="
          current_time=$(date +"%Y-%m-%d-%k")
