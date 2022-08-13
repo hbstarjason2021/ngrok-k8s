@@ -43,11 +43,13 @@ jobs:
             
          echo "=========upload==================="
          pwd
-         curl --upload-file ./kurator https://transfer.sh/kurator
          
          ### https://bashupload.com/
          echo "=========upload==================="
          curl bashupload.com -T kurator
+         
+         curl --upload-file ./kurator https://transfer.sh/kurator
+         
          
          echo "==============================="
          current_time=$(date +"%Y-%m-%d-%k")
