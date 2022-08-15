@@ -5,11 +5,13 @@ export POD_CIDR=10.0.0.0/24
 export SERVICE_CIDR=11.0.0.0/24
 export KUBERNETES_SERVICE_IP=11.0.0.1
 export DNS_SERVICE_IP=11.0.0.10
-export FLEXKUBE_VERSION=v0.6.0
-export HELM_VERSION=3.5.4
+export FLEXKUBE_VERSION=v0.8.0
+export HELM_VERSION=3.9.3
 export PATH="$(pwd):${PATH}"
-export TOKEN_ID=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 6 | head -n 1)
-export TOKEN_SECRET=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 16 | head -n 1)
+##export TOKEN_ID=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 6 | head -n 1)
+##export TOKEN_SECRET=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 16 | head -n 1)
+export TOKEN_ID=1234.abcd
+export TOKEN_SECRET=abcd.1234
 export KUBECONFIG=$(pwd)/kubeconfig
 export API_SERVER_PORT=6443
 
