@@ -16,6 +16,9 @@ k3s check-config
 # /usr/local/bin/k3s-uninstall.sh
 # /usr/local/bin/k3s-agent-uninstall.sh
 
+#### https://github.com/k3s-io/k3s/releases/download/v1.24.4-rc1%2Bk3s1/k3s
+#### nohup sudo k3s server &
+
 
 curl -sfL https://get.k3s.io | K3S_CLUSTER_SECRET=thisisverysecret sh -
 k3s kubectl get node
