@@ -1,5 +1,11 @@
 #!/bin/bash
 
+####  github.com--->hub.fastgit.xyz
+
+####  gcr.io--->gcr.lank8s.cn
+####  hcr.io--->ghcr.lank8s.cn
+
+
 set -eux
 
 red="\033[31m"
