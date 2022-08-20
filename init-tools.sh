@@ -103,7 +103,10 @@ function install_compose() {
 function change_docker_mirror(){
     cat >  /etc/docker/daemon.json <<EOF
     {
-      "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"]
+      "registry-mirrors": [
+      "https://docker.mirrors.ustc.edu.cn",
+      "http://hub-mirror.c.163.com"
+      ]
     }
 EOF
       systemctl restart docker
