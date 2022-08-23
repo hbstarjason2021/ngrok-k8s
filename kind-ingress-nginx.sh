@@ -53,6 +53,11 @@ kubectl get po -A
 kubectl create deployment nginx --image=nginx:alpine
 kubectl create service nodeport nginx --tcp=80:80
 
+kubectl run curl --image=hbstarjason/busyboxplus:curl -i --tty
+nslookup kubernetes
+
+kubectl attach <podname> -c curl -i -t 
+
 
 NODE_IP=$(kubectl get node -o wide|tail -1|awk {'print $6'})
 NODE_PORT=$(kubectl get svc nginx -o go-template='{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}')
