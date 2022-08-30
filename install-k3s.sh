@@ -31,3 +31,5 @@ curl -sfL https://get.k3s.io | K3S_CLUSTER_SECRET=thisisverysecret K3S_URL=https
 k3s kubectl get node
 until k3s kubectl get node | grep node01 | grep -q ' Ready'; do sleep 1; done; k3s kubectl get node
 
+
+### docker run --name mysql --restart=unless-stopped -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql:5.7
