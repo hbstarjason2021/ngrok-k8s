@@ -14,6 +14,13 @@ k3s check-config
 
 # curl -sfL https://rancher-mirror.oss-cn-beijing.aliyuncs.com/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn sh -
 
+# curl -sfL https://rancher-mirror.oss-cn-beijing.aliyuncs.com/k3s/k3s-install.sh | \
+#    INSTALL_K3S_MIRROR=cn \
+#    K3S_TOKEN=devops \
+#    sh -s - \
+#    --system-default-registry "registry.cn-hangzhou.aliyuncs.com"
+
+
 ### 卸载
 # /usr/local/bin/k3s-uninstall.sh
 # /usr/local/bin/k3s-agent-uninstall.sh
