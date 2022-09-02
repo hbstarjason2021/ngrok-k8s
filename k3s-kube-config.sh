@@ -5,7 +5,7 @@
 
 #### mkdir -p $HOME/.kube
 #### cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-#### sed -i '' 's/127\.0\.0\.1/172\.30\.1\.2/g' ~/.kube/config
+#### sed -i 's/127\.0\.0\.1/172\.30\.1\.2/g' ~/.kube/config
 
 ### setup kubectl config
 cp /etc/rancher/k3s/k3s.yaml /tmp/kube-config.txt
