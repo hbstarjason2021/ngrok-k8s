@@ -5,6 +5,9 @@
 curl -sfL https://get.k3s.io | sh -s - --disable=traefik
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
+mkdir -p $HOME/.kube
+cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+
 k3s check-config
 
 ### 国内安装k3s
