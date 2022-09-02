@@ -13,6 +13,8 @@ perl -pi -e 's/certificate-authority-data:.*/insecure-skip-tls-verify: true/g' /
 #perl -pi -e "s/127.0.0.1/$(curl -sS http://169.254.169.254/latest/meta-data/public-ipv4)/g" /tmp/kube-config.txt
 perl -pi -e "s/127.0.0.1/$(curl -sS ip.sb)/g" /tmp/kube-config.txt
 
+## LOCAL_IP=$(ip addr show dev $(ip r | grep default | tr ' ' \\n | grep -A1 dev | tail -n1) | grep 'inet ' | awk '{print $2}' | cut -d/ -f1)
+
 ### setup download service
 kubectl create configmap kube-config --from-file /tmp/kube-config.txt
 cat > /tmp/kube-config.yaml <<_EOF
