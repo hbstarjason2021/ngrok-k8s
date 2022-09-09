@@ -6,6 +6,9 @@
 ####  hcr.io--->ghcr.lank8s.cn
 
 
+###### https://github.com/anjia0532/gcr.io_mirror
+###### https://github.com/zhangguanzhang/google_containers
+
 set -eux
 
 red="\033[31m"
