@@ -18,6 +18,42 @@ echo -e "\033[45;37m 紫底白字 \033[0m"
 echo -e "\033[46;37m 天蓝底白字 \033[0m"
 echo -e "\033[47;30m 白底黑字 \033[0m"
 
+##########################
+
+Green="\033[32;1m"
+Red="\033[31m"
+Yellow="\033[33;1m"
+Blue="\033[36;1m"
+Font="\033[0m"
+GreenBG="\033[42;37m"
+RedBG="\033[41;37m"
+OK="${Green}[OK]${Font}"
+ERROR="${Red}[ERROR]${Font}"
+
+ok() {
+  echo
+  echo -e " ${OK} ${Green} $1 ${Font}"
+  echo
+}
+error() {
+  echo
+  echo -e "${ERROR} ${RedBG} $1 ${Font}"
+  echo
+}
+
+ing () {
+  echo
+  echo -e "${Yellow} $1 ${Font}"
+  echo
+}
+
+
+if [[ ! "$USER" == "root" ]]; then
+  error "警告：请使用root用户操作!~~"
+  exit 1
+fi
+
+
 # ----------------------------------
 # Colors
 # ----------------------------------
