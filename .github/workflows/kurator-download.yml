@@ -1,6 +1,7 @@
 name: kurator-download
 on:
-  gollum
+  #gollum
+  workflow_dispatch:
 jobs:
   downloading:
     runs-on: ubuntu-latest
