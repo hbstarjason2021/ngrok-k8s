@@ -1,4 +1,4 @@
-name: download-kurator
+name: kurator-download
 on:
   gollum
 jobs:
