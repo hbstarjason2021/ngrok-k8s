@@ -46,7 +46,8 @@ jobs:
          
          ### https://bashupload.com/
          echo "=========upload==================="
-         curl bashupload.com -T kurator
+         
+         ####curl bashupload.com -T kurator   ##### upload Too Slow
          
          curl --upload-file ./kurator https://transfer.sh/kurator
          
