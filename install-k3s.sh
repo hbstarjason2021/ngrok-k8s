@@ -17,11 +17,18 @@ k3s check-config
 
 # curl -sfL https://rancher-mirror.oss-cn-beijing.aliyuncs.com/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn sh -
 
+#### 国内资源安装
+
 # curl -sfL https://rancher-mirror.oss-cn-beijing.aliyuncs.com/k3s/k3s-install.sh | \
 #    INSTALL_K3S_MIRROR=cn \
 #    K3S_TOKEN=devops \
 #    sh -s - \
 #    --system-default-registry "registry.cn-hangzhou.aliyuncs.com"
+
+### K3s 默认使用的 containerd 
+### cat >> /etc/rancher/k3s/registries.yaml <<EOFmirrors:  "docker.io":    endpoint:      - "https://docker.mirrors.ustc.edu.cn" # 可根据需求替换 mirror 站点      - "https://registry-1.docker.io"EOFsystemctl restart k3s
+### crictl info
+
 
 
 ### 卸载
