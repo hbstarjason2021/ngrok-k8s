@@ -9,6 +9,42 @@
 ###### https://github.com/anjia0532/gcr.io_mirror
 ###### https://github.com/zhangguanzhang/google_containers
 
+
+<< CONTENT
+
+##### https://gitee.com/SuperManito/LinuxMirrors
+##### bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirrors.sh)
+
+
+## centos
+mv /etc/yum.repos.d /etc/yum.repos.d.orig.$(date -Iseconds)
+mkdir -p /etc/yum.repos.d/
+curl -sSLo /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+sed -i -e '/mirrors.cloud.aliyuncs.com/d' -e '/mirrors.aliyuncs.com/d' /etc/yum.repos.d/CentOS-Base.repo
+sed "s/keepcache=0/keepcache=1/" -i /etc/yum.conf
+yum install -y git
+
+## rhel7
+mv /etc/yum.repos.d /etc/yum.repos.d.orig.$(date -Iseconds)
+mkdir -p /etc/yum.repos.d/
+wget -qO /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+sed -i -e '/mirrors.cloud.aliyuncs.com/d' -e '/mirrors.aliyuncs.com/d' /etc/yum.repos.d/CentOS-Base.repo
+sed -i 's/$releasever/7/g' /etc/yum.repos.d/CentOS-Base.repo
+sed -i 's/PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+systemctl restart sshd
+
+## debian
+cp /etc/apt/sources.list /etc/apt/sources.list.orig.$(date -Iseconds)
+sed -i 's http://.*.debian.org http://mirrors.aliyun.com g' /etc/apt/sources.list
+
+## ubuntu
+cp /etc/apt/sources.list /etc/apt/sources.list.orig.$(date -Iseconds)
+sed -i 's http://.*.ubuntu.com http://mirrors.aliyun.com g' /etc/apt/sources.list
+
+CONTENT
+
+############################################################
+
 set -eux
 
 red="\033[31m"
