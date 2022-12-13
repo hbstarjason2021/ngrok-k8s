@@ -50,3 +50,7 @@ until k3s kubectl get node | grep node01 | grep -q ' Ready'; do sleep 1; done; k
 
 
 ### docker run --name mysql --restart=unless-stopped -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql:5.7
+
+
+kubectl wait --for=condition=Ready pods --all --namespace kube-system
+kubectl cluster-info
