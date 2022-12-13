@@ -2,6 +2,11 @@
 #curl -sfL https://get.k3s.io  | INSTALL_K3S_VERSION=v1.17.3 sh -
 #curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC_="--docker"  sh -s -
 
+set -o errexit
+set -o nounset
+set -o pipefail
+
+
 curl -sfL https://get.k3s.io | sh -s - --disable=traefik
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
