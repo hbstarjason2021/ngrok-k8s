@@ -1,5 +1,7 @@
 #!/bin/bash
 
+########## wget -qO-  https://raw.githubusercontent.com/hbstarjason2021/ngrok-k8s/main/init-tools.sh | bash
+
 ####  github.com--->hub.fastgit.xyz
 
 ####  gcr.io--->gcr.lank8s.cn
