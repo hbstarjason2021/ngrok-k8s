@@ -8,7 +8,7 @@ curl https://raw.githubusercontent.com/hbstarjason2021/ngrok-k8s/main/install-ku
 
 ## https://github.com/kubernetes-sigs/kind/releases
 
-KIND_VESION="v0.14.0"
+KIND_VESION="v0.17.0"
 curl -Lo ./kind https://kind.sigs.k8s.io/dl/${KIND_VESION}/kind-linux-amd64
 chmod +x ./kind
 mv ./kind /usr/local/bin/kind
