@@ -27,6 +27,21 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 
 
+function docker_daemon() {
+sudo mkdir -p /etc/docker
+cat >/etc/docker/daemon.json <<-EOF
+{
+    "registry-mirrors": ["https://qndprgwv.mirror.aliyuncs.com"],
+    "runtimes": {
+        "nvidia": {
+            "path": "/usr/bin/nvidia-container-runtime",
+            "runtimeArgs": []
+         }  
+    }
+}
+EOF
+
+
 ##### https://gitee.com/SuperManito/LinuxMirrors
 ##### bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirrors.sh)
 
