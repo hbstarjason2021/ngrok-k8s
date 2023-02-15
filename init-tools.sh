@@ -155,6 +155,7 @@ function install_compose() {
 }
 
 function change_docker_mirror(){
+    ## sudo mkdir -p /etc/docker
     cat >  /etc/docker/daemon.json <<EOF
     {
       "registry-mirrors": [
