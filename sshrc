@@ -1,0 +1,43 @@
+#!/bin/bash
+#author: testerzhang
+#root用户登录服务器，创建/etc/ssh/sshrc文件
+#将sshr文件内容放到上面创建的文件里
+
+#获取登录者的用户名
+user=$USER
+#获取登录者的IP地址
+ip=${SSH_CLIENT%% *}
+#获取登录的时间
+time=$(date +"%Y-%m-%d %H:%M:%S")
+
+outlog="/opt/log/loginlog"
+outdir=`dirname $outlog`
+server=`hostname`
+
+if [ -z "$ip" ]; then
+    #echo "ip is empty"
+    exit 0
+fi
+
+emailcontent="$ip在$time时间里$user登录了$server"
+
+if [ ! -d  "$outdir" ];then
+  exit 110
+fi
+
+echo $emailcontent >> $outlog
+
+if [ $? -ne 0 ]; then
+    exit 111
+fi
+
+#忽略某些IP
+ip_lists="10.10.10.10 10.10.10.11"
+if [[ "$ip_lists" =~ "$ip" ]]
+then
+  exit 0
+fi
+
+#发送通知，也可以改成发送邮件
+timeout 5 curl -o /dev/null -s -XPOST -H "Content-Type: application/json" "http://具体通知的接口地址" \
+-d '{ "subject":"'ssh登录"${server}"'","content":"'"${emailcontent}"'" }'
