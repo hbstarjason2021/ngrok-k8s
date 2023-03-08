@@ -11,6 +11,8 @@
 ###### https://github.com/anjia0532/gcr.io_mirror
 ###### https://github.com/zhangguanzhang/google_containers
 
+###### https://github.com/DaoCloud/public-image-mirror
+
 
 << CONTENT
 
