@@ -14,6 +14,8 @@
 sed -i '/SELINUX/s/enforcing/disabled/' /etc/selinux/config
 setenforce 0
 
+### sed -i '/SELINUX/{s/permissive/disabled/}' /etc/selinux/config
+
 # Disable swap
 swapoff -a && sysctl -w vm.swappiness=0
 sed -ri '/^[^#]*swap/s@^@#@' /etc/fstab
@@ -26,6 +28,32 @@ done
 
 # Disable NetworkManager
 systemctl stop NetworkManager && systemctl disable NetworkManager
+
+# 减少SWAP使用
+echo "0" > /proc/sys/vm/swappiness
+
+# 设置时区并同步时间
+ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+if ! crontab -l |grep ntpdate &>/dev/null ; then
+    (echo "* 1 * * * ntpdate time.windows.com >/dev/null 2>&1";crontab -l) |crontab
+fi
+
+# 历史命令显示操作时间
+if ! grep HISTTIMEFORMAT /etc/bashrc; then
+    echo 'export HISTTIMEFORMAT="%F %T `whoami` "' >> /etc/bashrc
+fi
+ 
+# SSH超时时间
+if ! grep "TMOUT=600" /etc/profile &>/dev/null; then
+    echo "export TMOUT=600" >> /etc/profile
+fi
+ 
+# 禁止root远程登录
+sed -i 's/#PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
+ 
+# 禁止定时任务向发送邮件
+sed -i 's/^MAILTO=root/MAILTO=""/' /etc/crontab
+
 
 
 # repo
