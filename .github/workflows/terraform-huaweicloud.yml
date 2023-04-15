@@ -19,6 +19,8 @@ jobs:
     steps:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
+      
+      ### uses: aws-actions/configure-aws-credentials@v1
 
     - name: Terraform version   
       run: terraform version  
