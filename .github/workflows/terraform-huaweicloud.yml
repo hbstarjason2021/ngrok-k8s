@@ -1,0 +1,33 @@
+name: terraform-huaweicloud
+
+on:
+  workflow_dispatch: 
+  #schedule:
+  #  - cron:  0 9,12,21 * * * 
+      # 
+      # https://tool.lu/crontab/
+      # https://datetime360.com/cn/utc-cst-china-time/
+  #watch:
+  #    types: started   
+
+jobs:
+  terraform-huaweicloud:
+    runs-on: ubuntu-latest
+    #if: github.event.repository.owner.id == github.event.sender.id
+    # https://p3terx.com/archives/github-actions-manual-trigger.html
+    
+    steps:
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+
+    - name: Terraform version   
+      run: terraform version  
+        
+    - name: terraform-huaweicloud
+      run: |
+         sudo timedatectl set-timezone 'Asia/Shanghai'
+         
+         git clone https://github.com/hbstarjason2021/terraform-workshop
+         cd huaweicloud/ecs/
+         
+         
