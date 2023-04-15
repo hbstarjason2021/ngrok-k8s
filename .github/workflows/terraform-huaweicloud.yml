@@ -28,6 +28,15 @@ jobs:
          sudo timedatectl set-timezone 'Asia/Shanghai'
          
          git clone https://github.com/hbstarjason2021/terraform-workshop
-         cd huaweicloud/ecs/
+         cd ./huaweicloud/ecs/
+         
+         terraform fmt -check
+         terraform init
+         terraform validate -no-color
+         terraform plan -no-color
+         
+         
+         
+         
          
          
