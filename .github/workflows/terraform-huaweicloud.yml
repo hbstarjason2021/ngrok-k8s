@@ -32,6 +32,9 @@ jobs:
          git clone https://github.com/hbstarjason2021/terraform-workshop
          cd ./terraform-workshop/huaweicloud/ecs/
          
+         export hw_access_key=${{ secrets.HW_ACCESS_KEY }}
+         export hw_secret_key=${{ secrets.HW_SECRET_KEY }}
+         
          # terraform fmt -check
          
          terraform init
