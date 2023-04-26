@@ -15,7 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     #if: github.event.repository.owner.id == github.event.sender.id
     # https://p3terx.com/archives/github-actions-manual-trigger.html
-    
+    env:
+       HW_ACCESS_KEY: ${{ secrets.HW_ACCESS_KEY }}
+       HW_SECRET_KEY: ${{ secrets.HW_SECRET_KEY }}
+       
     steps:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
@@ -42,8 +45,8 @@ jobs:
          #export hw_access_key=${{ secrets.HW_ACCESS_KEY }}
          #export hw_secret_key=${{ secrets.HW_SECRET_KEY }}
          
-         export HW_ACCESS_KEY=${{ secrets.HW_ACCESS_KEY }}
-         export HW_SECRET_KEY=${{ secrets.HW_SECRET_KEY }}
+         #export HW_ACCESS_KEY=${{ secrets.HW_ACCESS_KEY }}
+         #export HW_SECRET_KEY=${{ secrets.HW_SECRET_KEY }}
          
          # terraform fmt -check
          
