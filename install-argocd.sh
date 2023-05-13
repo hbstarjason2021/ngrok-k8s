@@ -1,3 +1,5 @@
+kubectl create namespace argocd
+
 kubectl apply \
     --namespace argocd \
     --filename https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml &&
