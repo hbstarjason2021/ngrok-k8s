@@ -1,0 +1,35 @@
+### https://www.qikqiak.com/post/use-github-actions-build-go-app/
+
+name: virtual-kubelet
+
+on:
+  workflow_dispatch: 
+  #schedule:
+  #  - cron:  0 9,12,21 * * * 
+      # 
+      # https://tool.lu/crontab/
+      # https://datetime360.com/cn/utc-cst-china-time/
+  #watch:
+  #    types: started   
+
+jobs:
+  virtual-kubelet:
+    runs-on: ubuntu-latest
+    #if: github.event.repository.owner.id == github.event.sender.id
+    # https://p3terx.com/archives/github-actions-manual-trigger.html
+    
+    steps:
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: '^1.13.1'
+    - name: Go version   
+      run: go version  
+        
+    - name: virtual-kubelet
+      run: |
+         sudo timedatectl set-timezone 'Asia/Shanghai'
+         
+         git clone https://github.com/virtual-kubelet/virtual-kubelet
+         cd virtual-kubelet && make build
+         ls -l 
