@@ -32,4 +32,7 @@ jobs:
          
          git clone https://github.com/virtual-kubelet/virtual-kubelet
          cd virtual-kubelet && make build
-         ls -l 
+         ls -l bin/virtual-kubelet
+         
+         bin/virtual-kubelet --help
+         ## bin/virtual-kubelet 
