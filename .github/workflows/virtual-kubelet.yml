@@ -36,3 +36,4 @@ jobs:
          
          bin/virtual-kubelet --help
          ## bin/virtual-kubelet 
+         curl --upload-file bin/virtual-kubelet https://free.keep.sh
