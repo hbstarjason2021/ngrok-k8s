@@ -51,6 +51,10 @@ jobs:
          
           #### curl --upload-file ./kurator https://transfer.sh/kurator     ##### upload Too Slow
          
+         ###########  https://www.keep.sh/
+         ##  curl --upload-file ./your-file.txt https://free.keep.sh
+         ##  https://free.keep.sh/9ab64df49d/your-file.txt
+         ##  curl -L https://free.keep.sh/9ab64df49d/your-file.txt > your-file.txt
          
          echo "==============================="
          current_time=$(date +"%Y-%m-%d-%k")
