@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## https://github.com/clusternet/clusternet/blob/main/hack/local-running.sh
+
 set -o errexit
 set -o nounset
 set -o pipefail
