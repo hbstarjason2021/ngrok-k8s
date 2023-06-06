@@ -117,6 +117,7 @@ function install_git () {
 
 function install_docker() {
     curl -fsSL https://get.docker.com | bash -
+    ## sudo sh -c "$(wget https://get.docker.com -O -)" 
     ## curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
     ## apt install docker.io -y
     echo -e "${green}docker is already installed${white}"
