@@ -89,6 +89,10 @@ if [[ "$(whoami)" != "root" ]]; then
 	echo "please run this script as root ." >&2
 	exit 1
 fi
+
+src_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd "$src_dir"
+
 CONTENT
 
 set _platform=""
