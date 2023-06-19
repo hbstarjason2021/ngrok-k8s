@@ -22,7 +22,7 @@
 sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
-  "registry-mirrors": ["https://gap9aif6.mirror.aliyuncs.com"]
+  "registry-mirrors": ["https://de5884ui.mirror.aliyuncs.com"]
 }
 EOF
 sudo systemctl daemon-reload
