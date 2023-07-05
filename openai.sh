@@ -8,6 +8,10 @@
  # @Telegram: https://t.me/missuo
  # 
  # Copyright © 2023 by Vincent, All Rights Reserved. 
+
+ 
+ # bash <(curl -Ls https://cdn.jsdelivr.net/gh/missuo/OpenAI-Checker/openai.sh)
+ # https://github.com/missuo/OpenAI-Checker
 ### 
 
 RED='\033[0;31m'
