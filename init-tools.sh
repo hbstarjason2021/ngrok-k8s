@@ -2,6 +2,8 @@
 
 ########## wget -qO-  https://raw.githubusercontent.com/hbstarjason2021/ngrok-k8s/main/init-tools.sh | bash
 
+#### 加速器 https://gist.github.com/y0ngb1n/7e8f16af3242c7815e7ca2f0833d3ea6
+
 ####  github.com--->hub.fastgit.xyz
 
 ####  gcr.io--->gcr.lank8s.cn
