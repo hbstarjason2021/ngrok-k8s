@@ -1,3 +1,9 @@
+###### ssh-keygen -t rsa
+###### ssh-keygen -f ~/.ssh/id_rsa -P '' -q
+###### ssh-copy-id [remotehost]
+###### ssh-copy-id -i .ssh/id_rsa.pub -p 22 root@172.30.2.2
+
+
 !/bin/bash -e
 
 ### install sshpass
