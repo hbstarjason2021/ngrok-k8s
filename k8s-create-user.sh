@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+#### https://github.com/gravitational/teleport/blob/master/examples/k8s-auth/get-kubeconfig.sh
+
 set -e
 
 if [ $# -ne 2 ]; then
