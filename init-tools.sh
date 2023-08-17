@@ -95,6 +95,30 @@ fi
 src_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$src_dir"
 
+
+###########################################
+function command_exists() {
+	command -v "$@" > /dev/null 2>&1
+}
+
+
+if command_exists kind; then
+  echo "kind exists"
+else
+  wget https://ghproxy.com/https://github.com/kubernetes-sigs/kind/releases/download/v0.20.0/kind-linux-amd64
+  chmod +x kind-linux-amd64
+  mv kind-linux-amd64 /usr/local/bin/kind
+fi
+
+if command_exists kubectl; then
+  echo "kubectl exists"
+else
+  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+  chmod +x kubectl
+  mv kubectl /usr/local/bin/kubectl
+fi
+#############################################
+
 CONTENT
 
 set _platform=""
