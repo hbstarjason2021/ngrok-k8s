@@ -34,6 +34,8 @@ clusterctl init --infrastructure docker
 
 ### kubectl apply -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
+####### clusterctl generate cluster [name] --kubernetes-version [version] | kubectl apply -f -
+
 
 # The list of service CIDR, default ["10.128.0.0/12"]
 export SERVICE_CIDR=["10.96.0.0/12"]
