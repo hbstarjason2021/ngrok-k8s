@@ -3,14 +3,14 @@
 ### https://cluster-api.sigs.k8s.io/user/quick-start.html
 
 
-curl -L https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.2.0/clusterctl-linux-amd64 -o clusterctl
+curl -L https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.5.0/clusterctl-linux-amd64 -o clusterctl
 chmod +x ./clusterctl
 mv ./clusterctl /usr/local/bin/clusterctl
 clusterctl version
 
 curl https://raw.githubusercontent.com/hbstarjason2021/ngrok-k8s/main/install-kubectl.sh | bash
 
-    KIND_VESION="v0.14.0"
+    KIND_VESION="v0.20.0"
     curl -Lo ./kind https://kind.sigs.k8s.io/dl/${KIND_VESION}/kind-linux-amd64
     chmod +x ./kind
     mv ./kind /usr/local/bin/kind
