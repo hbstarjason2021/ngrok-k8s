@@ -10,15 +10,31 @@ if [ $# -ne 2 ]; then
 fi
 
 USER=$1
-NAMESPACE=$2
+NAMESPACE="${NAMESPACE:-default}"
 
 # Create service account
-kubectl -n default create sa "$USER"
+kubectl -n $NAMESPACE create sa "$USER"
 sleep 1
-secret=$(kubectl -n default get sa "$USER" -o json | jq -r '.secrets[].name')
+
+# Create secret
+cat <<EOF | kubectl -n "$NAMESPACE" apply -f -
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: $USER
+  namespace: $NAMESPACE
+  annotations:
+    kubernetes.io/service-account.name: "$USER"
+EOF
+
+
+# secret=$(kubectl -n $NAMESPACE get sa "$USER" -o json | jq -r '.secrets[].name')
+secret=$(kubectl -n $NAMESPACE get secret --no-headers | awk '{print $1}')
+
 # Collect information needed to create the kubeconfig
-kubectl -n default get secret $secret -o json | jq -r '.data["ca.crt"]' | base64 --decode > ca.crt
-user_token=$(kubectl -n default get secret $secret -o json | jq -r '.data["token"]' | base64 --decode)
+kubectl -n $NAMESPACE get secret $secret -o json | jq -r '.data["ca.crt"]' | base64 --decode > ca.crt
+user_token=$(kubectl -n $NAMESPACE get secret $secret -o json | jq -r '.data["token"]' | base64 --decode)
 c=$(kubectl config current-context)
 name=$(kubectl config get-contexts $c | awk '{print $3}' | tail -n 1)
 endpoint=$(kubectl config view -o jsonpath="{.clusters[?(@.name == \"$name\")].cluster.server}")
@@ -88,7 +104,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: $USER
-    namespace: default
+    namespace: $NAMESPACE
 roleRef:
   kind: ClusterRole
   name: limited-user
@@ -101,7 +117,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: $USER
-    namespace: default
+    namespace: $NAMESPACE
 roleRef:
   kind: Role
   name: limited-user
