@@ -75,3 +75,83 @@ users:
     token: ${SA_TOKEN}
 EOF
 
+########
+
+# Create roles
+cat <<EOF | kubectl -n "$NAMESPACE" apply -f -
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: limited-user
+rules:
+  - apiGroups: [""]
+    resources:
+      - nodes
+    verbs:
+      - get
+      - list
+      - watch
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: limited-user
+rules:
+  - apiGroups:
+      - ""
+      - apps
+      - extensions
+    resources:
+      - deployments
+      - cronjobs
+      - jobs
+      - secrets
+      - services
+      - persistentvolumeclaims
+      - pods
+      - pods/attach
+      - pods/exec
+      - pods/log
+      - configmaps
+      - ingresses
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+      - edit
+      - exec
+
+EOF
+
+# Create role bindings
+cat <<EOF | kubectl -n "$NAMESPACE" apply -f -
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: $USER-limited-user
+subjects:
+  - kind: ServiceAccount
+    name: $USER
+    namespace: $NAMESPACE
+roleRef:
+  kind: ClusterRole
+  name: limited-user
+  apiGroup: rbac.authorization.k8s.io
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: $USER-limited-user
+subjects:
+  - kind: ServiceAccount
+    name: $USER
+    namespace: $NAMESPACE
+roleRef:
+  kind: Role
+  name: limited-user
+  apiGroup: rbac.authorization.k8s.io
+EOF
