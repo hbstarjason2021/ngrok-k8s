@@ -64,13 +64,13 @@ clusters:
 contexts:
 - context:
     cluster: ${CURRENT_CLUSTER}
-    user: ${CURRENT_CLUSTER}-${TELEPORT_SA}
+    user: ${CURRENT_CLUSTER}-${USER}
   name: ${CURRENT_CONTEXT}
 current-context: ${CURRENT_CONTEXT}
 kind: Config
 preferences: {}
 users:
-- name: ${CURRENT_CLUSTER}-${TELEPORT_SA}
+- name: ${CURRENT_CLUSTER}-${USER}
   user:
     token: ${SA_TOKEN}
 EOF
