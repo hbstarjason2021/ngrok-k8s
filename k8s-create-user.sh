@@ -34,6 +34,8 @@ EOF
 # secret=$(kubectl -n $NAMESPACE get sa "$USER" -o json | jq -r '.secrets[].name')
 secret=$(kubectl -n $NAMESPACE get secret --no-headers | awk '{print $1}')
 
+apt install jq -y
+
 # Collect information needed to create the kubeconfig
 kubectl -n $NAMESPACE get secret $secret -o json | jq -r '.data["ca.crt"]' | base64 --decode > ca.crt
 user_token=$(kubectl -n $NAMESPACE get secret $secret -o json | jq -r '.data["token"]' | base64 --decode)
