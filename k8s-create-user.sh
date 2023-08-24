@@ -2,7 +2,9 @@
 
 #### https://github.com/gravitational/teleport/blob/master/examples/k8s-auth/get-kubeconfig.sh
 
-set -e
+set -eux
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
 
 if [ $# -ne 2 ]; then
   echo "Usage: $0 user namespace" 1>&2
