@@ -21,7 +21,7 @@ metadata:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: ${TELEPORT_SA}
+  name: ${USER}
   namespace: ${NAMESPACE}
 EOF
 
