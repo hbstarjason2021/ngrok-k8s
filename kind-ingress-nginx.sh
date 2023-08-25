@@ -60,9 +60,6 @@ INGRESS_DOMAIN="${INGRESS_IP}.nip.io"
 kubectl create deployment nginx --image=nginx:alpine
 kubectl create service nodeport nginx --tcp=80:80
 
-# 自行替换 <PUBLIC_IP> 为当前节点的公网 IP
-kubectl expose deploy nginx --type=LoadBalancer --port=80 --external-ip <PUBLIC_IP>
-
 kubectl run curl --image=hbstarjason/busyboxplus:curl -i --tty
 nslookup kubernetes
 
