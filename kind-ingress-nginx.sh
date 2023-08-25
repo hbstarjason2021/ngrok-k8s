@@ -52,9 +52,6 @@ kubectl get po -A
 #############################
 <<'COMMENT'
 
-
-
-
 kubectl create deployment nginx --image=nginx:alpine
 kubectl create service nodeport nginx --tcp=80:80
 
