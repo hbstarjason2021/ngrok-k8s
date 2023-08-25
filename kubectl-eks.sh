@@ -66,3 +66,24 @@ case "$1" in
     help
     ;;
 esac
+
+######################################
+:<<COMMENT
+
+ kubectl eks nodes
+NAME                                    STATUS  REGION     ZONE        INTERNAL-IP  INSTANCE-ID         INSTANCE-TYPE  LIFECYCLE  VERSION
+ip-XXXX-161.eu-west-1.compute.internal  Ready   eu-west-1  eu-west-1c  XXXX.161     i-XXXXXXXcafa83983  m5.4xlarge     spot       v1.26.6-eks-a5565ad
+ip-XXXX-135.eu-west-1.compute.internal  Ready   eu-west-1  eu-west-1c  XXXX.135     i-XXXXXXX8e13ffb61  c5a.2xlarge    normal     v1.26.6-eks-a5565ad
+ip-XXXX-16.eu-west-1.compute.internal   Ready   eu-west-1  eu-west-1c  XXXX.16      i-XXXXXXXddae0f330  m5d.4xlarge    spot       v1.26.6-eks-a5565ad
+ip-XXXX-215.eu-west-1.compute.internal  Ready   eu-west-1  eu-west-1c  XXXX.215     i-XXXXXXXf27950a10  m5.4xlarge     spot       v1.26.6-eks-a5565ad
+ip-XXXX-115.eu-west-1.compute.internal  Ready   eu-west-1  eu-west-1a  XXXX.115     i-XXXXXXX803ffb76c  c5a.2xlarge    normal     v1.26.6-eks-a5565ad
+ip-XXXX-5.eu-west-1.compute.internal    Ready   eu-west-1  eu-west-1a  XXXX.5       i-XXXXXXX321da8a30  c5a.2xlarge    normal     v1.26.6-eks-a5565ad
+ip-XXXX-227.eu-west-1.compute.internal  Ready   eu-west-1  eu-west-1a  XXXX.227     i-XXXXXXXb78588f78  m5.4xlarge     spot       v1.26.6-eks-a5565ad
+ip-XXXX-37.eu-west-1.compute.internal   Ready   eu-west-1  eu-west-1a  XXXX.37      i-XXXXXXXb15a62d6d  m5d.4xlarge    spot       v1.26.6-eks-a5565ad
+ip-XXXX-115.eu-west-1.compute.internal  Ready   eu-west-1  eu-west-1b  XXXX.115     i-XXXXXXXecdd029a7  m5.4xlarge     spot       v1.26.6-eks-a5565ad
+ip-XXXX-51.eu-west-1.compute.internal   Ready   eu-west-1  eu-west-1b  XXXX.51      i-XXXXXXXdd7e21638  m5d.4xlarge    spot       v1.26.6-eks-a5565ad
+ip-XXXX-53.eu-west-1.compute.internal   Ready   eu-west-1  eu-west-1b  XXXX.53      i-XXXXXXXac39081d5  m5.4xlarge     spot       v1.26.6-eks-a5565ad
+ip-XXXX-131.eu-west-1.compute.internal  Ready   eu-west-1  eu-west-1b  XXXX.131     i-XXXXXXXd9afd5ab7  c5a.2xlarge    normal     v1.26.6-eks-a5565ad
+ip-XXXX-176.eu-west-1.compute.internal  Ready   eu-west-1  eu-west-1b  XXXX.176     i-XXXXXXX9facd1234  c5a.2xlarge    normal     v1.26.6-eks-a5565ad
+
+COMMENT
