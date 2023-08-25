@@ -52,9 +52,7 @@ kubectl get po -A
 #############################
 <<'COMMENT'
 
-# Ingress IP
-INGRESS_IP=$(docker inspect kind | jq -r '.. | .IPv4Address? | select(type != "null") | split("/")[0]')
-INGRESS_DOMAIN="${INGRESS_IP}.nip.io"
+
 
 
 kubectl create deployment nginx --image=nginx:alpine
@@ -65,6 +63,10 @@ nslookup kubernetes
 
 kubectl attach <podname> -c curl -i -t 
 
+
+# Ingress IP
+INGRESS_IP=$(docker inspect kind | jq -r '.. | .IPv4Address? | select(type != "null") | split("/")[0]')
+INGRESS_DOMAIN="${INGRESS_IP}.nip.io"
 
 NODE_IP=$(kubectl get node -o wide|tail -1|awk {'print $6'})
 NODE_PORT=$(kubectl get svc nginx -o go-template='{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}')
