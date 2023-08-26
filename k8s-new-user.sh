@@ -9,7 +9,7 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
 ## USER=$1
 USER="${USE:-zhang-sa}"
 ## NAMESPACE="${NAMESPACE:-default}"
-NAMESPACE="${NAMESPACE:-zhang}"
+NAMESPACE="${NAMESPACE:-default}"
 
 ##############
 kubectl apply -f - <<EOF
