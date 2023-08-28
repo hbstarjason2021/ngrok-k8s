@@ -29,7 +29,13 @@ nodes:
 EOF
 
 # Ingress IP
-INGRESS_IP=$(docker inspect kind | jq -r '.. | .IPv4Address? | select(type != "null") | split("/")[0]')
+# INGRESS_IP=$(docker inspect kind | jq -r '.. | .IPv4Address? | select(type != "null") | split("/")[0]')
+
+docker inspect kind | jq -r '.. | .IPv4Address? | select(type != "null") | split("/")[0]' > WORKER_IP
+INGRESS_IP=$(sed -n '2p' WORKER_IP)
+
+echo $INGRESS_IP
+
 INGRESS_DOMAIN="${INGRESS_IP}.nip.io"
 
 # Install Ingress Nginx
