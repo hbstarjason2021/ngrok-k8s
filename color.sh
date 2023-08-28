@@ -52,6 +52,21 @@ if [[ ! "$USER" == "root" ]]; then
   error "警告：请使用root用户操作!~~"
   exit 1
 fi
+##########################################
+Green_font="\033[32m"
+Yellow_font="\033[33m"
+Red_font="\033[31m"
+Font_suffix="\033[0m"
+Info="${Green_font}[Info]${Font_suffix}"
+Error="${Red_font}[Error]${Font_suffix}"
+Tips="${Green_font}[Tips]${Font_suffix}"
+Temp_path="/var/tmp/nexttrace"
+
+checkRootPermit() {
+    [[ $EUID -ne 0 ]] && echo -e "${Error} 请使用sudo/root权限运行本脚本" && exit 1
+}
+checkRootPermit
+
 
 #################################################
 
