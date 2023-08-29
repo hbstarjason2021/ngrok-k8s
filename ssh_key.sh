@@ -7,7 +7,20 @@
 !/bin/bash -e
 
 ### install sshpass
+
+os=$(cat /etc/os-release 2>/dev/null | grep ^ID= | awk -F= '{print $2}')
+if [ "$os" = "\"centos\"" ]; then
+   yum update ; yum install -y sshpass
+fi
+if [ "$os" = "ubuntu" ]; then
+   apt update ; apt install -y sshpass
+fi
+
+echo $os
+
+
 ### export SSHPASS=YOUR_PASSWAORD
+
 
 cd $(dirname $0)/..
 
