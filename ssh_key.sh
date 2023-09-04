@@ -3,6 +3,9 @@
 ###### ssh-copy-id [remotehost]
 ###### ssh-copy-id -i .ssh/id_rsa.pub -p 22 root@172.30.2.2
 
+######## name="KeyPair-$(cat /proc/sys/kernel/random/uuid | sed 's/[-]//g' | head -c 8;echo)"
+######## ssh-keygen -q -t rsa -N '' -b 2048 -v -f $path -m PEM
+
 
 !/bin/bash -e
 
