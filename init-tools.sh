@@ -150,6 +150,7 @@ function install_docker() {
     ## sudo sh -c "$(wget https://get.docker.com -O -)" 
     ## curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
     ## apt install docker.io -y
+    docker -v | cut -d ' ' -f 3 | cut -d ',' -f 1
     echo -e "${green}docker is already installed${white}"
 }
 
