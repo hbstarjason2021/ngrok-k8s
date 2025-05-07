@@ -1,0 +1,25 @@
+name: Run Test
+
+on:
+  watch:
+    types: started
+
+jobs:
+  build:
+    name: Run on CentOS 7
+    runs-on: ubuntu-latest
+    container:
+      image: "centos:7"  # 需要运行的容器镜像（参考 docker hub）
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Test
+      run: |
+        yum makecache
+        yum install -y centos-release-scl-rh centos-release-scl
+        yum install -y devtoolset-10-gcc devtoolset-10-gcc-c++ devtoolset-10-make
+        source /opt/rh/devtoolset-10/enable
+        gcc --version
+        cat /etc/os-release
