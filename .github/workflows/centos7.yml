@@ -1,9 +1,8 @@
 name: Run Centos7 Test
 
 on:
-  watch:
-    types: started
-
+  workflow_dispatch:
+  
 jobs:
   build:
     name: Run on CentOS 7
