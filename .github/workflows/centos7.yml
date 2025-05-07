@@ -1,4 +1,4 @@
-name: Run Test
+name: Run Centos7 Test
 
 on:
   watch:
